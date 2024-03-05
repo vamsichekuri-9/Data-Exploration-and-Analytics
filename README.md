@@ -58,5 +58,4 @@ standard deviation of daily flight distances. As the mean distance increases, so
 deviation. This makes intuitive sense, as longer flights are likely to have more variability in the
 distance due to factors such as weather, air traffic, and flight routing.
 
-<img width="804" alt="image" src="https://github.com/vamsichekuri-9/Data-Exploration-and-Analytics/assets/70580715/f7def21f-81ce-4b3e-8398-6b280ca12efc">
-
+<img width="793" alt="image" src="https://github.com/vamsichekuri-9/Data-Exploration-and-Analytics/assets/70580715/fc52903d-4766-41ea-bd77-f862dbd7288c">
