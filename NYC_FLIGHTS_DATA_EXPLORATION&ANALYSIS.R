@@ -1,0 +1,83 @@
+#1. Flight Distance vs. Cancellations:
+  
+#Install the tidyverse package
+install.packages('tidyverse')
+#install the required libraries
+#install.packages('nycflights13')
+library(nycflights13)
+library(tidyverse)
+data(flights)
+#head(flights) #colnames(flights)
+# Load the nycflights13 library and the dplyr and ggplot2 packages
+library(dplyr)
+library(ggplot2)
+#Assign a variable to the flights data
+dataframe<-flights
+#Create a boxplot to compare the median distance between airports for cancelled& non-cancelled flights
+dataframe %>%
+  ggplot(aes(x = is.na(arr_delay), y = distance, fill = is.na(arr_delay))) +
+  geom_boxplot(notch = TRUE) +
+  stat_summary(fun.y = median, geom = "errorbar", width = 0.2, size = 1.5, color = "red") +
+  stat_summary(fun.y = median, geom = "point", size = 4, color = "red") +
+  stat_summary(fun.y = mean, geom = "errorbar", width = 0.2, size = 1.5, color = "blue") +
+  stat_summary(fun.y = mean, geom = "point", size = 4, color = "blue") +
+  stat_summary(fun.data = "median_hilow", geom = "errorbar", width = 0.2, size = 1, color =
+                 "black") +
+                 xlab("") +
+  ylab("Distance") +
+  ggtitle("Median Distance between Airports for Cancelled&Non-Cancelled Flights") +
+  scale_x_discrete(labels = c("Not Cancelled", "Cancelled"))+
+  guides(fill = FALSE)
+
+#2. Seasonal Trends in Cancellations:
+# Load the data frame
+data("flights")
+# proportion of cancelled flights each month
+prop_flights <- flights %>%
+  group_by(month) %>%
+  summarize(prop_cancelled = mean(is.na(dep_delay)))
+# Specify the colors for each month
+colors<- c("1" = "#00AFBB",
+           "2" = "#E7B800",
+           "3" = "#FC4E07",
+           "4" = "#00A087",
+           "5" = "#FF420E",
+           "6" = "#2EFE2E",
+           "7" = "#FFFF00",
+           "8" = "#1E90FF",
+           "9" = "#FF69B4",
+           "10" = "#ADD8E6",
+           "11" = "#FFB6C1",
+           "12" = "#4B0082")
+# Create a bar plot of cancelled flights proportion for every month with specified colors
+ggplot(prop_flights, aes(x = as.factor(month), y = prop_cancelled, fill = as.factor(month))) +
+  geom_col() +
+  scale_fill_manual(values = colors) +
+  xlab("Months") +
+  ylab("Proportion") +
+  ggtitle("Proportion of Cancelled Flights everyMonth")+
+  guides(fill = FALSE)
+
+# 3. Distance Variability Analysis:
+
+ibrary(ggplot2)
+library(dplyr)
+data("flights")
+# Filter out cancelled flights and select only the necessary variables to make sense by jus
+taking non-cancelled flights
+data_filtered <- flights %>%
+  filter(!is.na(distance)) %>%
+  select(month, day, distance)
+# Calculate the average and standard deviation of distance for every day
+daily_distance <- data_filtered %>%
+  group_by(month, day) %>%
+  summarize(mean_distance = mean(distance),
+            sd_distance = sd(distance))
+# Get a scatter plot of mean vs standard deviation of daily distances, with a fitted line
+and confidence intervals
+ggplot(daily_distance, aes(x = mean_distance, y = sd_distance)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  xlab("Mean") +
+  ylab("Standard deviation") +
+  ggtitle("Relation between Mean & StD of Daily Flight Distances")
