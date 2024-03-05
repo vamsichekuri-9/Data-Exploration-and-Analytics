@@ -21,6 +21,9 @@ also higher for cancelled flights compared to non-cancelled flights.
 However, it's important to note that this analysis only considers the relationship between
 distance between airports and cancelled/non-cancelled flights
 
+<img width="802" alt="image" src="https://github.com/vamsichekuri-9/Data-Exploration-and-Analytics/assets/70580715/14b0ab94-f263-4ad9-8e5a-7a1a1ba6d9cf">
+
+
 ***Objective-2 : Analyzed whether the canceled flights tend to occur more often in certain months? That is, compared to
 other months, are there certain months with a large proportion of their flights canceled***
 
@@ -37,6 +40,9 @@ this analysis I found that the proportion rate is high for flights cancelled in 
 February(2). On the other hand very minimal rate of flights got cancelled in the October
 month.
 
+<img width="804" alt="image" src="https://github.com/vamsichekuri-9/Data-Exploration-and-Analytics/assets/70580715/a1c48f7c-0acd-440d-84a7-ffb56129ca0d">
+
+
 ***Objective-3 : Found the relationship between average distance between airports for flights flown on
 each of the 365 days of the year and the standard deviation of the distances between airports
 for flights flown on each of those days.***
@@ -51,4 +57,6 @@ From this plot, we can see that there is a positive linear relationship between 
 standard deviation of daily flight distances. As the mean distance increases, so does the standard
 deviation. This makes intuitive sense, as longer flights are likely to have more variability in the
 distance due to factors such as weather, air traffic, and flight routing.
+
+<img width="804" alt="image" src="https://github.com/vamsichekuri-9/Data-Exploration-and-Analytics/assets/70580715/f7def21f-81ce-4b3e-8398-6b280ca12efc">
 
